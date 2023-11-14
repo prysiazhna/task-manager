@@ -1,0 +1,28 @@
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+  height: 50px;
+  background-color: #343a40 !important;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.link {
+  margin: 0 10px;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  &:hover {
+    color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+  }
+}
+
+.active-link {
+  color: rgba(255, 255, 255, 1);
+}

@@ -1,0 +1,13 @@
+<mat-card class="card">
+  <div class="card-info">
+    <div class="card-info-title">Title: {{task.title}}</div>
+    <div class="card-info-description">Description: {{task.description}}</div>
+  </div>
+  <div class="card-buttons">
+    <button class="card-btn" mat-raised-button color="primary"
+      [routerLink]="['/list/edit-task/'+task.title]">Edit</button>
+    <button class="card-btn" (click)="delete()" mat-raised-button color="primary">
+      Delete
+    </button>
+  </div>
+</mat-card>

@@ -1,0 +1,26 @@
+<form [formGroup]="form" class="form">
+  <h2 class="page-title">
+    {{pageTitle}}
+  </h2>
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title">
+    <mat-error *ngIf="checkError('title', 'required')">Title is required</mat-error>
+    <mat-error *ngIf="checkError('title', 'minlength')">Title should be more than 5 characters</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="form-field">
+    <mat-label>Description</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+    <mat-error *ngIf="checkError('description', 'required')">Description is required</mat-error>
+    <mat-error *ngIf="checkError('description', 'maxlength')">Description should be less than 100 characters
+    </mat-error>
+  </mat-form-field>
+
+  <div class="form-buttons">
+    <button (click)="onSubmit()" class="form-btn" mat-raised-button color="primary"
+      [disabled]="!form.valid">Submit</button>
+    <button class="register" class="form-btn" mat-stroked-button color="primary" [routerLink]="['/list']">
+      Cancel</button>
+  </div>
+</form>

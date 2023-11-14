@@ -1,0 +1,27 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form flex">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form flex">
+    <h3 class="page-title">Register</h3>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username">
+      <mat-error *ngIf="checkError('username', 'required')">Username is required</mat-error>
+      <mat-error *ngIf="checkError('username', 'minlength')">Username should be more than 2 characters</mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password">
+      <mat-error *ngIf="checkError('password', 'required')">Password is required</mat-error>
+      <mat-error *ngIf="checkError('password', 'minlength')">Password should be more than 6 characters
+      </mat-error>
+    </mat-form-field>
+
+    <div class="form-buttons">
+      <button type="submit" class="form-btn" mat-raised-button color="primary" [disabled]="!form.valid">Submit</button>
+      <button class="register" class="form-btn" mat-stroked-button color="primary" [routerLink]="['/login']">
+        Login</button>
+
+    </div>
+  </form>

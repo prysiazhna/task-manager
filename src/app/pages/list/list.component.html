@@ -1,0 +1,6 @@
+<button class="add" class="add-btn" mat-raised-button color="primary" [routerLink]="['/list/create-task']">
+  Add task</button>
+
+<div *ngFor="let task of tasks">
+  <app-card [task]="task"></app-card>
+</div>

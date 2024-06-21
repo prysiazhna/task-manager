@@ -1,4 +1,32 @@
-<h2 class="home page-title">
-  Welcome user
-  <span class="home-username">{{currentUser.username}}</span>!
-</h2>
+<div class="home">
+  <div class="header">
+    <h2 class="title">
+      <mat-icon>person</mat-icon>
+      Welcome
+      <span class="username">{{currentUser.username}}</span>
+    </h2>
+
+    <button mat-raised-button color="primary" (click)="navigateToCreateTask()">
+      <mat-icon>add</mat-icon>
+      Create Task List
+    </button>
+  </div>
+
+  <h2 class="about">
+    <mat-icon>task_alt</mat-icon>
+    <span>About This App</span>
+  </h2>
+  <div class="app-info">
+    <div class="card">
+      This app allows you to manage your tasks efficiently. <br/>
+      You can create, edit, and delete tasks as needed. Stay organized and keep track of your progress with ease.
+    </div>
+    <div class="card">
+      With this app, you will never forget your important tasks and deadlines. The user-friendly interface makes it
+        easy to manage your daily activities.
+    </div>
+    <div class="text">Start creating tasks and stay productive every day!</div>
+  </div>
+
+
+  </div>

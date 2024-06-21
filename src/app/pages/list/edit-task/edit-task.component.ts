@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Task } from 'src/app/models';
-import { TaskService } from 'src/app/services/task.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Task} from 'src/app/models';
+import {TaskService} from 'src/app/services/task.service';
 
 @Component({
   selector: 'app-edit-task',
@@ -9,17 +9,21 @@ import { TaskService } from 'src/app/services/task.service';
   styleUrls: ['./edit-task.component.scss'],
 })
 export class EditTaskComponent implements OnInit {
-  public task: Task | null;
+  public task?: Task;
 
-  constructor(private taskService: TaskService, public route: ActivatedRoute) {}
+  constructor(private taskService: TaskService, public route: ActivatedRoute) {
+  }
 
   public ngOnInit(): void {
     const title = this.route.snapshot.paramMap.get('id');
-    this.task = title? this.taskService.getTask(title): null;
+    if (title) {
+      this.task = this.taskService.getTask(title);
+    }
   }
 
   public editTask(updatedTask: Task): void {
-    if(this.task?.title) {
+    if (this.task?.title) {
       this.taskService.updateTask(this.task.title, updatedTask);
-    }  }
+    }
+  }
 }

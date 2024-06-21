@@ -1,4 +1,4 @@
-import { ComponentsModule } from './../../components/components.module';
+import { ComponentsModule } from '../../components/components.module';
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';

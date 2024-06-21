@@ -1,4 +1,4 @@
-import { Task } from './../../../models';
+import { Task } from '../../../models';
 import { Component } from '@angular/core';
 import { TaskService } from 'src/app/services/task.service';
 

@@ -11,7 +11,7 @@ const homeModule = () =>
 
 const routes: Routes = [
   { path: '', loadChildren: accountModule },
-  { path: 'list', loadChildren: listModule, canActivate: [AuthGuard] },
+  { path: 'list', loadChildren: listModule,  canActivate: [AuthGuard] },
   { path: 'home', loadChildren: homeModule, canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'home' },
 ];

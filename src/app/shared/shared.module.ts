@@ -11,6 +11,9 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatMenuModule} from "@angular/material/menu";
 import {MatListModule} from "@angular/material/list";
+import {MatSelectModule} from "@angular/material/select";
+import {MatOptionModule} from "@angular/material/core";
+import {MatDatepickerModule} from "@angular/material/datepicker";
 
 
 @NgModule({
@@ -28,6 +31,9 @@ import {MatListModule} from "@angular/material/list";
     RouterModule,
     MatListModule,
     MatMenuModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatOptionModule,
     MatIconModule,
     MatToolbarModule,
   ],

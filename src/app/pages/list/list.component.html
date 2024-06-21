@@ -1,6 +1,23 @@
-<button class="add" class="add-btn" mat-raised-button color="primary" [routerLink]="['/list/create-task']">
-  Add task</button>
+<button
+  class="add-btn"
+  mat-raised-button
+  color="primary"
+  [routerLink]="['/list/create-task']">
+  <mat-icon>add</mat-icon>
+  Create New Task
+</button>
 
-<div *ngFor="let task of tasks">
-  <app-card [task]="task"></app-card>
-</div>
+<ng-container *ngIf="tasks?.length else noData">
+  <div *ngFor="let task of tasks">
+    <app-card [task]="task"></app-card>
+  </div>
+</ng-container>
+
+<ng-template #noData>
+  <div *ngIf="!tasks?.length" class="empty-state">
+    <div class="content">
+      <mat-icon class="empty-icon">error_outline</mat-icon>
+      <p class="empty-message">No tasks available. Create a new task to get started!</p>
+    </div>
+  </div>
+</ng-template>

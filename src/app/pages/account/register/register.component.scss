@@ -10,16 +10,32 @@
     width: 64%;
     margin: 5px 0 24px 0;
   }
+
   &-btn {
     margin: 20px 5px 0 5px;
     width: 120px;
     font-size: 18px;
     padding: 5px 0;
   }
+
   &-buttons {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+  }
+
+  .login {
+    color: #7c7373;
+
+    .link {
+      color: #673ab6;
+      text-decoration: none;
+      font-size: 16px;
+
+      &:hover {
+        color: #3e0e92;
+      }
+    }
   }
 }

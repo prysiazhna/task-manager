@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form flex">
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form flex">
     <h3 class="page-title">Register</h3>
 
@@ -18,10 +18,13 @@
       </mat-error>
     </mat-form-field>
 
-    <div class="form-buttons">
-      <button type="submit" class="form-btn" mat-raised-button color="primary" [disabled]="!form.valid">Submit</button>
-      <button class="register" class="form-btn" mat-stroked-button color="primary" [routerLink]="['/login']">
-        Login</button>
 
+
+    <div class="login">
+      Already have an account?
+      <a class="link" href="/login">Login</a>
     </div>
+    <div class="form-buttons">
+    <button type="submit" class="form-btn" mat-raised-button color="primary" [disabled]="!form.valid">Submit</button>
+  </div>
   </form>

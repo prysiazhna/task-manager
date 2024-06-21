@@ -1,26 +1,88 @@
 <form [formGroup]="form" class="form">
-  <h2 class="page-title">
+  <h2>
     {{pageTitle}}
   </h2>
   <mat-form-field appearance="outline" class="form-field">
     <mat-label>Title</mat-label>
     <input matInput formControlName="title">
-    <mat-error *ngIf="checkError('title', 'required')">Title is required</mat-error>
-    <mat-error *ngIf="checkError('title', 'minlength')">Title should be more than 5 characters</mat-error>
+    <mat-error *ngIf="checkError('title', 'required')">
+      Title is required
+    </mat-error>
+    <mat-error *ngIf="checkError('title', 'minlength')">
+      Title should be more than 5 characters
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="outline" class="form-field">
     <mat-label>Description</mat-label>
     <textarea matInput formControlName="description"></textarea>
-    <mat-error *ngIf="checkError('description', 'required')">Description is required</mat-error>
-    <mat-error *ngIf="checkError('description', 'maxlength')">Description should be less than 100 characters
+    <mat-error *ngIf="checkError('description', 'required')">
+      Description is required
+    </mat-error>
+    <mat-error *ngIf="checkError('description', 'maxlength')">
+      Description should be less than 100 characters
     </mat-error>
   </mat-form-field>
 
+<!--  <mat-form-field appearance="outline" class="form-field">-->
+<!--    <mat-label>Due Date</mat-label>-->
+<!--    <input matInput [matDatepicker]="picker" formControlName="dueDate">-->
+<!--    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+<!--    <mat-datepicker #picker></mat-datepicker>-->
+<!--    <mat-error *ngIf="checkError('dueDate', 'required')">-->
+<!--      Due date is required-->
+<!--    </mat-error>-->
+<!--  </mat-form-field>-->
+
+<!--  <mat-form-field appearance="outline" class="form-field">-->
+<!--    <mat-label>Due Time</mat-label>-->
+<!--    <input matInput [matTimepicker]="timePicker" formControlName="dueTime">-->
+<!--    <mat-timepicker-toggle matSuffix [for]="timePicker"></mat-timepicker-toggle>-->
+<!--    <mat-timepicker #timePicker></mat-timepicker>-->
+<!--    <mat-error *ngIf="checkError('dueTime', 'required')">-->
+<!--      Due time is required-->
+<!--    </mat-error>-->
+<!--  </mat-form-field>-->
+
+<!--  <mat-form-field appearance="outline" class="form-field">-->
+<!--    <mat-label>Status</mat-label>-->
+<!--    <mat-select formControlName="status">-->
+<!--      <mat-option *ngFor="let status of statuses" [value]="status">-->
+<!--        {{ status }}-->
+<!--      </mat-option>-->
+<!--    </mat-select>-->
+<!--    <mat-error *ngIf="checkError('status', 'required')">-->
+<!--      Status is required-->
+<!--    </mat-error>-->
+<!--  </mat-form-field>-->
+
+<!--  <mat-form-field appearance="outline" class="form-field">-->
+<!--    <mat-label>Priority</mat-label>-->
+<!--    <mat-select formControlName="priority">-->
+<!--      <mat-option value="low">Low</mat-option>-->
+<!--      <mat-option value="medium">Medium</mat-option>-->
+<!--      <mat-option value="high">High</mat-option>-->
+<!--    </mat-select>-->
+<!--    <mat-error *ngIf="checkError('priority', 'required')">-->
+<!--      Priority is required-->
+<!--    </mat-error>-->
+<!--  </mat-form-field>-->
+
   <div class="form-buttons">
-    <button (click)="onSubmit()" class="form-btn" mat-raised-button color="primary"
-      [disabled]="!form.valid">Submit</button>
-    <button class="register" class="form-btn" mat-stroked-button color="primary" [routerLink]="['/list']">
-      Cancel</button>
+    <button
+      (click)="onSubmit()"
+      class="form-btn"
+      mat-raised-button
+      color="primary"
+      [disabled]="!form.valid">
+      Submit
+    </button>
+    <button
+      class="form-btn"
+      mat-stroked-button
+      color="primary"
+      [routerLink]="['/list']">
+      Cancel
+    </button>
   </div>
 </form>

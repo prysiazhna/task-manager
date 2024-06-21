@@ -1,6 +1,78 @@
 .home {
-  margin: 20px 0 0 45px;
-  &-username {
-    color: #343a40;
+  margin: 20px 45px;
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
+
+  .title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #343a40;
+
+    mat-icon {
+      margin-right: 10px;
+    }
+  }
+
+  .username {
+    color: var(--primary);
+    margin-left: 8px;
+  }
+
+
+    button {
+      font-size: 16px;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+
+      mat-icon {
+        margin-right: 5px;
+      }
+
+  }
+
+  .about {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0;
+    color: #343a40;
+
+    mat-icon {
+      margin-right: 10px;
+    }
+  }
+
+  .app-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .card {
+      text-align: center;
+      margin-top: 20px;
+      padding: 20px;
+      line-height: 25px;
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 70%;
+      color: #7a7a7a;
+      margin-bottom: 10px;
+    }
+    .text {
+      color: var(--primary);
+      margin-top: 20px;
+      font-size: 20px;
+    }
+  }
+
 }

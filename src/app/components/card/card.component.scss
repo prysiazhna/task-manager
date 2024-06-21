@@ -1,27 +1,38 @@
-.card {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin: 10px 20px;
-  &-info {
+.task-card {
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-info {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    width: 86%;
-    &-description {
-      width: 80%;
-    }
+    flex-direction: column;
+    margin-bottom: 20px;
+
     &-title {
-      width: 20%;
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    &-description {
+      font-size: 16px;
+      color: #666;
     }
   }
-  &-buttons {
+
+  mat-card-actions {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 14%;
+    justify-content: flex-end;
+
+    .card-btn {
+      margin-left: 12px;
+    }
   }
 }

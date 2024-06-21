@@ -1,6 +1,7 @@
-import { Task } from './../models';
+import { Task } from '../models';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import {getFromLocalStorage, setToLocalStorage} from "./local-storage";
 
 @Injectable({ providedIn: 'root' })
 export class TaskService {
@@ -11,38 +12,39 @@ export class TaskService {
   constructor() {}
 
   public getTasks(): Task[] {
-    return JSON.parse(localStorage.getItem('tasks') as string);
+    return getFromLocalStorage('tasks');
   }
+
   public setTaskData(tasks: Task[] | null): void {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
+    setToLocalStorage('tasks', tasks);
     this.tasks.next(tasks);
   }
 
-  public getTask(title: string): Task {
-    let tasks = JSON.parse(localStorage.getItem('tasks') as string);
-    return tasks.find((item: Task) => title === item.title);
+  public getTask(title: string): Task | undefined {
+    const tasks = getFromLocalStorage('tasks');
+    return tasks ? tasks.find((item: Task) => title === item.title) : undefined;
   }
 
   public addTask(task: Task): void {
-    let tasks = JSON.parse(localStorage.getItem('tasks') as string) || [];
+    const tasks = getFromLocalStorage('tasks') || [];
     this.setTaskData([...tasks, task]);
   }
 
   public deleteTask(task: Task): void {
-    let tasks = JSON.parse(localStorage.getItem('tasks') as string);
-    tasks.forEach((item: Task, index: number) => {
-      if (item.title === task.title) {
-        tasks.splice(index, 1);
-      }
-    });
-    this.setTaskData(tasks);
+    let tasks = getFromLocalStorage('tasks');
+    if (tasks) {
+      tasks = tasks.filter((item: Task) => item.title !== task.title);
+      this.setTaskData(tasks);
+    }
   }
 
   public updateTask(oldTitle: string, newTask: Task): void {
-    let tasks = JSON.parse(localStorage.getItem('tasks') as string);
-    let updatedTasks = tasks.map((item: Task) => {
-      return item.title === oldTitle ? (item = { ...newTask }) : item;
-    });
-    this.setTaskData(updatedTasks);
+    let tasks = getFromLocalStorage('tasks');
+    if (tasks) {
+      const updatedTasks = tasks.map((item: Task) =>
+        item.title === oldTitle ? { ...newTask } : item
+      );
+      this.setTaskData(updatedTasks);
+    }
   }
 }

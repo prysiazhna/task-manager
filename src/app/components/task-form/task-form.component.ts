@@ -1,4 +1,4 @@
-import { Task } from './../../models';
+import { Task } from '../../models';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -10,16 +10,26 @@ import { Router } from '@angular/router';
 })
 export class TaskFormComponent implements OnInit {
   @Input() public pageTitle: string;
-  @Input() public task: Task | null;
+  @Input() public task: Task;
   @Output() submit = new EventEmitter();
 
   public form: FormGroup = this.fb.group({
     title: [
       '',
-      [Validators.required, Validators.minLength(5), Validators.maxLength(50)],
+      [
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(50)
+      ],
     ],
     description: ['', [Validators.required, Validators.maxLength(100)]],
+    dueDate: ['', Validators.required],
+    dueTime: ['', Validators.required],
+    status: ['', Validators.required],
+    priority: ['', Validators.required],
   });
+
+  public statuses: string[] = ['New', 'In Progress', 'Closed'];
 
   constructor(private fb: FormBuilder, private router: Router) {}
 

@@ -1,0 +1,13 @@
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+
+  mat-form-field:not(:first-child) {
+    margin: 0 8px;
+  }
+
+  .reset {
+    height: 56px;
+  }
+}

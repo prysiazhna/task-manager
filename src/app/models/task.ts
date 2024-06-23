@@ -1,8 +1,8 @@
-export class Task {
+export interface Task {
   description: string;
   title: string;
-  dueDate: Date;
-  dueTime: string;
+  dueDateTime: Date;
   status: string;
   priority: string;
 }
+

@@ -1,0 +1,29 @@
+<div [formGroup]="filterForm" class="filters">
+  <mat-form-field appearance="outline">
+    <input matInput formControlName="title" placeholder="Search Title">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="date-range-filter">
+    <mat-label>Due date range</mat-label>
+    <mat-date-range-input [rangePicker]="picker">
+      <input matStartDate placeholder="Start date" formControlName="dueDateStart">
+      <input matEndDate placeholder="End date" formControlName="dueDateEnd">
+    </mat-date-range-input>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-select formControlName="status" placeholder="Status">
+      <mat-option *ngFor="let status of statusList" [value]="status">{{ status }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-select formControlName="priority" placeholder="Priority">
+      <mat-option *ngFor="let priority of priorityList" [value]="priority">{{ priority }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" class="reset" (click)="resetFilters()">Reset Filters</button>
+</div>

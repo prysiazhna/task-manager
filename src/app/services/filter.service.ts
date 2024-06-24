@@ -8,17 +8,18 @@ export class TaskFilterService {
   createFilterPredicate() {
     return (data: Task, filter: string): boolean => {
       const searchTerms = JSON.parse(filter);
-      const dueDateTimeStr = data.dueDateTime ? new Date(data.dueDateTime).toISOString() : '';
+      const dueDateStr = data.dueDate ? new Date(data.dueDate).toISOString() : '';
 
-      const startDate = searchTerms.dueDateStart ? new Date(searchTerms.dueDateStart).toISOString() : null;
-      const endDate = searchTerms.dueDateEnd ? new Date(searchTerms.dueDateEnd).toISOString() : null;
+      const { dueDateStart, dueDateEnd, title, status, priority } = searchTerms;
+      const startDate = dueDateStart ? new Date(dueDateStart).toISOString() : null;
+      const endDate = dueDateEnd ? new Date(dueDateEnd).toISOString() : null;
 
-      const isWithinDateRange = (!startDate || dueDateTimeStr >= startDate) && (!endDate || dueDateTimeStr <= endDate);
+      const isWithinDateRange = (!startDate || dueDateStr >= startDate) && (!endDate || dueDateStr <= endDate);
 
-      const matchesTitle = !searchTerms.title || data.title.toLowerCase().includes(searchTerms.title.toLowerCase());
-      const matchesDateRange = !searchTerms.dueDateStart || !searchTerms.dueDateEnd || isWithinDateRange;
-      const matchesStatus = !searchTerms.status || data.status === searchTerms.status;
-      const matchesPriority = !searchTerms.priority || data.priority === searchTerms.priority;
+      const matchesTitle = !title || data.title.toLowerCase().includes(title.toLowerCase());
+      const matchesDateRange = (!dueDateStart || !dueDateEnd || isWithinDateRange);
+      const matchesStatus = !status || data.status === status;
+      const matchesPriority = !priority || data.priority === priority;
 
       return matchesTitle && matchesDateRange && matchesStatus && matchesPriority;
     };

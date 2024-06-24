@@ -12,20 +12,5 @@ export enum TaskPriority {
   Low = 'Low'
 }
 
-export const TaskTableColumns: string[] = ['title', 'description', 'dueDateTime', 'status', 'priority', 'actions'];
+export const TaskTableColumns: string[] = ['title', 'description', 'dueDate', 'status', 'priority', 'actions'];
 
-
-export const customTheme: NgxMaterialTimepickerTheme = {
-  container: {
-    bodyBackgroundColor: '#3e0e92',
-    buttonColor: '#ffffff'
-  },
-  dial: {
-    dialBackgroundColor: '#673ab6',
-  },
-  clockFace: {
-    clockFaceBackgroundColor: '#3e0e92',
-    clockHandColor: '#673ab6',
-    clockFaceTimeInactiveColor: '#ffffff'
-  }
-};

@@ -12,9 +12,9 @@
       <td mat-cell *matCellDef="let task"> {{task.description}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="dueDateTime">
+    <ng-container matColumnDef="dueDate">
       <th mat-header-cell mat-sort-header *matHeaderCellDef>Due Date</th>
-      <td mat-cell *matCellDef="let task"> {{task.dueDateTime | date: 'short'}} </td>
+      <td mat-cell *matCellDef="let task"> {{task.dueDate | date: 'mediumDate'}} </td>
     </ng-container>
 
     <ng-container matColumnDef="status">

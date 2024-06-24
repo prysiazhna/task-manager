@@ -1,9 +1,10 @@
 import {TaskService} from 'src/app/services/task.service';
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
-import {BehaviorSubject, EMPTY, empty} from 'rxjs';
+import {BehaviorSubject} from 'rxjs';
 import {User} from '../models';
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {getFromLocalStorage, setToLocalStorage} from "./local-storage.service";
 
 @Injectable({providedIn: 'root'})
 export class UserService {
@@ -16,23 +17,30 @@ export class UserService {
     private snackBar: MatSnackBar,
   ) {
   }
+  private getUsers(): User[] {
+    return getFromLocalStorage('users') || [];
+  }
+
+  private setUsers(users: User[]): void {
+    setToLocalStorage('users', users);
+  }
 
   public register(user: User): void {
-    let users = JSON.parse(localStorage.getItem('users') as string) || [];
-    localStorage.setItem('users', JSON.stringify([...users, user]));
+    const users = this.getUsers();
+    this.setUsers([...users, user]);
   }
 
   public setUserData(user: User): void {
-    localStorage.setItem('user', JSON.stringify(user));
+    setToLocalStorage('user', user);
     this.currentUser.next(user);
   }
 
   public getCurrentUser(): User {
-    return JSON.parse(localStorage.getItem('user') as string);
+    return getFromLocalStorage('user');
   }
 
   public login(user: User): void {
-    let users = JSON.parse(localStorage.getItem('users') as string);
+    const users = this.getUsers();
     const currentUser = users.find(
       (item: User) =>
         user.username === item.username && user.password === item.password,

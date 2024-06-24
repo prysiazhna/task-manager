@@ -69,7 +69,7 @@ export class TaskTableComponent implements OnChanges, AfterViewInit {
   }
 
   private setInitialSort(): void {
-    const sortState: Sort = {active: 'dueDateTime', direction: 'asc'};
+    const sortState: Sort = {active: 'dueDate', direction: 'asc'};
     this.sort.active = sortState.active;
     this.sort.direction = sortState.direction;
     this.sort.sortChange.emit(sortState);
@@ -77,7 +77,7 @@ export class TaskTableComponent implements OnChanges, AfterViewInit {
   }
 
   public onFilterChange(filterValues: Record<string, any>): void {
-    this.filterValues = { ...filterValues, dueDateTime: [filterValues['dueDateStart'], filterValues['dueDateEnd']] }; // змінив
+    this.filterValues = { ...filterValues, dueDate: [filterValues['dueDateStart'], filterValues['dueDateEnd']] };
     this.dataSource.filter = JSON.stringify(filterValues);
   }
 

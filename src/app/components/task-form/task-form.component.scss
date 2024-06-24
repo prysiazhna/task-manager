@@ -24,15 +24,3 @@
     align-items: center;
   }
 }
-
-::ng-deep {
-  .ngx-material-timepicker-toggle {
-    margin-right: 8px;
-
-    svg {
-      fill: #757575;
-      width: 24px;
-      height: 24px;
-    }
-  }
-}

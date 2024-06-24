@@ -1,7 +1,7 @@
 export interface Task {
   description: string;
   title: string;
-  dueDateTime: Date;
+  dueDate: Date;
   status: string;
   priority: string;
 }

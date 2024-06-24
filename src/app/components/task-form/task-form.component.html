@@ -39,19 +39,6 @@
   </mat-form-field>
 
   <mat-form-field appearance="outline" class="form-field small-input">
-    <mat-label>Due Time</mat-label>
-    <input matInput [ngxTimepicker]="timePicker" formControlName="dueTime" readonly>
-    <ngx-material-timepicker-toggle matSuffix [for]="timePicker"></ngx-material-timepicker-toggle>
-    <ngx-material-timepicker #timePicker [theme]="customTheme"></ngx-material-timepicker>
-    <mat-error *ngIf="checkError('dueTime', 'required')">
-      Due time is required
-    </mat-error>
-    <mat-error *ngIf="checkError('dueTime', 'invalidTime')">
-      Time cannot be in the past
-    </mat-error>
-  </mat-form-field>
-
-  <mat-form-field appearance="outline" class="form-field small-input">
     <mat-label>Status</mat-label>
     <mat-select formControlName="status">
       <mat-option *ngFor="let status of statuses" [value]="status">

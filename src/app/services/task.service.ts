@@ -1,7 +1,7 @@
 import { Task } from '../models';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import {getFromLocalStorage, setToLocalStorage} from "./local-storage";
+import {getFromLocalStorage, setToLocalStorage} from "./local-storage.service";
 
 @Injectable({ providedIn: 'root' })
 export class TaskService {

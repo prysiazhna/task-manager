@@ -14,7 +14,6 @@ import {MatListModule} from "@angular/material/list";
 import {MatSelectModule} from "@angular/material/select";
 import {MatNativeDateModule, MatOptionModule} from "@angular/material/core";
 import {MatDatepickerModule} from "@angular/material/datepicker";
-import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
 import {MatTableModule} from "@angular/material/table";
 import {MatSortModule} from "@angular/material/sort";
 import {MatPaginatorModule} from "@angular/material/paginator";
@@ -41,7 +40,6 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     MatPaginatorModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    NgxMaterialTimepickerModule,
     MatOptionModule,
     MatIconModule,
     MatToolbarModule,

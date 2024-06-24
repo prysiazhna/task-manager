@@ -25,6 +25,6 @@ export class RegisterComponent {
   };
   public onSubmit(): void {
     this.userService.register(this.form.value);
-    this.router.navigate(['/login']);
+    this.router.navigate(['account/login']);
   }
 }

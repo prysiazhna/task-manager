@@ -1,8 +1,7 @@
-import {TaskService} from 'src/app/services/task.service';
 import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {BehaviorSubject} from 'rxjs';
-import {User} from '../models';
+import {Task, User} from '../models';
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {getFromLocalStorage, setToLocalStorage} from "./local-storage.service";
 
@@ -13,7 +12,6 @@ export class UserService {
 
   constructor(
     private router: Router,
-    private taskService: TaskService,
     private snackBar: MatSnackBar,
   ) {
   }
@@ -57,9 +55,21 @@ export class UserService {
   }
 
   public logout(): void {
-    this.taskService.setTaskData(null);
     localStorage.removeItem('user');
     this.currentUser.next(null as any);
-    this.router.navigate(['/login']);
+    this.router.navigate(['account/login']);
+  }
+
+  public updateUserTasks(tasks: Task[]): void {
+    const user = this.getCurrentUser();
+    if (user) {
+      user.tasks = tasks;
+      this.setUserData(user);
+
+      const users = this.getUsers().map((u) =>
+        u.username === user.username ? user : u
+      );
+      this.setUsers(users);
+    }
   }
 }

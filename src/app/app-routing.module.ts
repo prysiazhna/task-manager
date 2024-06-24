@@ -10,7 +10,8 @@ const homeModule = () =>
   import('./pages/home/home.module').then(x => x.HomeModule);
 
 const routes: Routes = [
-  { path: '', loadChildren: accountModule },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'account', loadChildren: accountModule },
   { path: 'list', loadChildren: listModule,  canActivate: [AuthGuard] },
   { path: 'home', loadChildren: homeModule, canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'home' },

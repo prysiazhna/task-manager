@@ -1,37 +1,47 @@
 import { Task } from '../models';
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import {getFromLocalStorage, setToLocalStorage} from "./local-storage.service";
+import { UserService } from './user.service';
 
 @Injectable({ providedIn: 'root' })
 export class TaskService {
   private tasks = new BehaviorSubject<Task[] | null>(null);
-
   public tasks$ = this.tasks.asObservable();
+  private userService: UserService;
 
-  constructor() {}
+  constructor(private injector: Injector) {}
+
+  private getUserService(): UserService {
+    if (!this.userService) {
+      this.userService = this.injector.get(UserService);
+    }
+    return this.userService;
+  }
 
   public getTasks(): Task[] {
-    return getFromLocalStorage('tasks');
+    const user = this.getUserService().getCurrentUser();
+    return user ? user.tasks : [];
   }
 
   public setTaskData(tasks: Task[] | null): void {
-    setToLocalStorage('tasks', tasks);
-    this.tasks.next(tasks);
+    if (tasks !== null) {
+      this.getUserService().updateUserTasks(tasks);
+      this.tasks.next(tasks);
+    }
   }
 
   public getTask(title: string): Task | undefined {
-    const tasks = getFromLocalStorage('tasks');
+    const tasks = this.getTasks();
     return tasks ? tasks.find((item: Task) => title === item.title) : undefined;
   }
 
   public addTask(task: Task): void {
-    const tasks = getFromLocalStorage('tasks') || [];
+    const tasks = this.getTasks() || [];
     this.setTaskData([...tasks, task]);
   }
 
   public deleteTask(task: Task): void {
-    let tasks = getFromLocalStorage('tasks');
+    let tasks = this.getTasks();
     if (tasks) {
       tasks = tasks.filter((item: Task) => item.title !== task.title);
       this.setTaskData(tasks);
@@ -39,7 +49,7 @@ export class TaskService {
   }
 
   public updateTask(oldTitle: string, newTask: Task): void {
-    let tasks = getFromLocalStorage('tasks');
+    let tasks = this.getTasks();
     if (tasks) {
       const updatedTasks = tasks.map((item: Task) =>
         item.title === oldTitle ? { ...newTask } : item
